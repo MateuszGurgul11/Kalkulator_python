@@ -1,20 +1,30 @@
 import logging
 logging.basicConfig(level = logging.DEBUG)
 
+
 while True:
     result = 0
-
-    a = float(input("Podaj pierwszą liczbe: "))
     operation = input("Podaj operacje jaką chcesz wykonać: '+' - dodawanie, '-' - odejmowanie, '*' - mnozenie, '/' - dzielenie: ")
-    b = float(input("Podaj drugą liczbe: "))
+
+    if operation == '+' or operation == '*':
+        n = int(input("Podaj na ilu liczbach chesz wykonac operacje: "))
+
+        if operation == '*':
+            result = 1
+
+        for i in range(n):
+            x = int(input(f"Podaj składnik {i + 1}: "))
+            if(operation == '+'):
+                result += x
+            elif(operation == '*'):
+                result *= x
+    else:
+        a = float(input("Podaj pierwszą liczbe: "))
+        b = float(input("Podaj drugą liczbe: "))
 
 
-    if(operation == '+'):
-        result = a + b
-    elif(operation == '-'):
+    if(operation == '-'):
         result = a - b
-    elif(operation == '*'):
-        result = a * b
     elif(operation == '/'):
         if(a == 0 or b == 0):
             print("Nie dziel przez 0!!")
@@ -23,12 +33,9 @@ while True:
 
     print(f"Wynik to: {result}")
 
-    if operation == '+':
-        logging.debug(f"Dodaję {a} i {b}")
-    elif operation == '-':
+   
+    if operation == '-':
         logging.debug(f"Odejmuje {a} i {b}")
-    elif operation == '*':
-        logging.debug(f"Mnoze {a} i {b}")
     elif operation == '/':
         logging.debug(f"Dziele {a} i {b}")
 
